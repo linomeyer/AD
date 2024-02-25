@@ -1,4 +1,4 @@
-package ch.hslu;
+package ch.hslu.e01;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
