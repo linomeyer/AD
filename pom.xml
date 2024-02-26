@@ -55,6 +55,7 @@
     </developers>
     <modules>
         <module>SW01</module>
+        <module>SW02</module>
     </modules>
 
     <scm>
