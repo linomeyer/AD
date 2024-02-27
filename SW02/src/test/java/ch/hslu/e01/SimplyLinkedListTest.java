@@ -54,4 +54,16 @@ class SimplyLinkedListTest {
         assertTrue(list.contains(new Example(9)));
         assertTrue(list.contains(new Example(5)));
     }
+
+    @Test
+    void testListWithOtherDatatype() {
+        SimplyLinkedList<String> strList = new SimplyLinkedList<>();
+
+        strList.addFirst("asdfb");
+
+        assertTrue(strList.contains("asdfb"));
+        assertEquals("asdfb", strList.getFirst());
+        strList.remove("asdfb");
+        assertFalse(strList.contains("asdfb"));
+    }
 }

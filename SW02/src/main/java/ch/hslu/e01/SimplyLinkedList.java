@@ -12,10 +12,12 @@ public class SimplyLinkedList<E> {
     }
 
     public boolean contains(E item) {
-        ListIterator<E> iterator = this.iterator();
-        while (iterator.hasNext()) {
-            if (iterator.next().equals(item)) {
-                return true;
+        if (head != null) {
+            ListIterator<E> iterator = this.iterator();
+            while (iterator.hasNext()) {
+                if (iterator.next().equals(item)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -31,8 +33,13 @@ public class SimplyLinkedList<E> {
     public boolean remove(E itemToRemove) {
         ListIterator<E> iterator = this.iterator();
         while (iterator.hasNext()) {
-            if (iterator.next().equals(itemToRemove)) {
+            E next = iterator.next();
+            if (next.equals(itemToRemove)) {
                 iterator.remove();
+                // otherwise it doesn't work if the head item is removed
+                if (next.equals(head.item)) {
+                    head = head.next;
+                }
                 return true;
             }
         }
@@ -65,7 +72,7 @@ public class SimplyLinkedList<E> {
 
         @Override
         public boolean hasNext() {
-            return currentNode.next != null;
+            return index != 0 ? currentNode.next != null : currentNode.item != null;
         }
 
         @Override
