@@ -5,7 +5,7 @@ import java.util.EmptyStackException;
 /**
  * This is a simple definition of a basic stack with basic functionality for Strings
  */
-public interface StringStack<E> {
+public interface Stack<E> {
 
     /**
      * Retrieve and remove the element that was pushed last

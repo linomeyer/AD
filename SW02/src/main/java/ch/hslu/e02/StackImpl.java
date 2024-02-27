@@ -2,11 +2,12 @@ package ch.hslu.e02;
 
 import java.util.EmptyStackException;
 
-public class StringStackImpl<E> implements StringStack<E> {
+public class StackImpl<E> implements Stack<E> {
     private E[] stack;
     private int currentIndex;
 
-    public StringStackImpl(Class<E[]> clazz, int size) {
+    @SuppressWarnings("unchecked")
+    public StackImpl(Class<E[]> clazz, int size) {
         stack = (E[]) new Object[size];
         currentIndex = 0;
     }
