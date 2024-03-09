@@ -1,5 +1,7 @@
 package ch.hslu;
 
+import ch.hslu.e01.BinaryTreeImpl;
+import ch.hslu.e01.Item;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -55,6 +57,21 @@ class BinaryTreeImplTest {
         assertTrue(tree.search(new Item(9)));
         assertTrue(tree.search(new Item(12)));
         assertTrue(tree.search(new Item(-3)));
+    }
 
+    @Test
+    void createEmptyTree_addNodes_nodeAreAddedAndTreeStructureIsStillCorrect() {
+        BinaryTreeImpl<Item> tree = new BinaryTreeImpl<>(new Item(6));
+        tree.add(new Item(12));
+        tree.add(new Item(-3));
+        tree.add(new Item(9));
+
+        // to look at printout of binary tree (from logs)
+        tree.inorder();
+
+        assertTrue(tree.search(new Item(6)));
+        assertTrue(tree.search(new Item(9)));
+        assertTrue(tree.search(new Item(12)));
+        assertTrue(tree.search(new Item(-3)));
     }
 }

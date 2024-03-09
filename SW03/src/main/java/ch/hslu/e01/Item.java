@@ -1,4 +1,4 @@
-package ch.hslu;
+package ch.hslu.e01;
 
 public record Item(int number) implements Comparable<Item> {
 

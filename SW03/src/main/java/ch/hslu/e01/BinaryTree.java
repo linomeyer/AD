@@ -1,4 +1,4 @@
-package ch.hslu;
+package ch.hslu.e01;
 
 public interface BinaryTree<E extends Comparable<E>> {
     boolean search(E item);
