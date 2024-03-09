@@ -1,34 +1,32 @@
-package ch.hslu;
+package ch.hslu.e02;
 
-import ch.hslu.e01.BinaryTreeImpl;
-import ch.hslu.e01.Item;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class BinaryTreeImplTest {
+class BinaryHashTreeImplTest {
     @Test
     void createExampleTree_searchRightMostItem_true() {
-        BinaryTreeImpl<Item> tree = new BinaryTreeImpl<>();
+        BinaryHashTreeImpl<Item> tree = new BinaryHashTreeImpl<>();
         assertTrue(tree.search(new Item(7)));
     }
 
     @Test
     void createExampleTree_searchLeftMostItem_true() {
-        BinaryTreeImpl<Item> tree = new BinaryTreeImpl<>();
+        BinaryHashTreeImpl<Item> tree = new BinaryHashTreeImpl<>();
         assertTrue(tree.search(new Item(1)));
     }
 
     @Test
     void createExampleTree_searchRootItem_true() {
-        BinaryTreeImpl<Item> tree = new BinaryTreeImpl<>();
+        BinaryHashTreeImpl<Item> tree = new BinaryHashTreeImpl<>();
         assertTrue(tree.search(new Item(4)));
     }
 
     @Test
     void createExampleTree_searchItems_true() {
-        BinaryTreeImpl<Item> tree = new BinaryTreeImpl<>();
+        BinaryHashTreeImpl<Item> tree = new BinaryHashTreeImpl<>();
         assertTrue(tree.search(new Item(5)));
         assertTrue(tree.search(new Item(6)));
         assertTrue(tree.search(new Item(2)));
@@ -37,7 +35,7 @@ class BinaryTreeImplTest {
 
     @Test
     void createExampleTree_searchItems_false() {
-        BinaryTreeImpl<Item> tree = new BinaryTreeImpl<>();
+        BinaryHashTreeImpl<Item> tree = new BinaryHashTreeImpl<>();
         assertFalse(tree.search(new Item(9)));
         assertFalse(tree.search(new Item(14)));
         assertFalse(tree.search(new Item(26)));
@@ -46,7 +44,7 @@ class BinaryTreeImplTest {
 
     @Test
     void createExampleTree_addNodes_nodeAreAddedAndTreeStructureIsStillCorrect() {
-        BinaryTreeImpl<Item> tree = new BinaryTreeImpl<>();
+        BinaryHashTreeImpl<Item> tree = new BinaryHashTreeImpl<>();
         tree.add(new Item(12));
         tree.add(new Item(-3));
         tree.add(new Item(9));
@@ -61,7 +59,7 @@ class BinaryTreeImplTest {
 
     @Test
     void createEmptyTree_addNodes_nodeAreAddedAndTreeStructureIsStillCorrect() {
-        BinaryTreeImpl<Item> tree = new BinaryTreeImpl<>(new Item(6));
+        BinaryHashTreeImpl<Item> tree = new BinaryHashTreeImpl<>(new Item(6));
         tree.add(new Item(12));
         tree.add(new Item(-3));
         tree.add(new Item(9));
