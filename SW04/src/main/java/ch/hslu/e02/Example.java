@@ -1,4 +1,4 @@
-package ch.hslu.e01;
+package ch.hslu.e02;
 
 public record Example(int number) {
 
