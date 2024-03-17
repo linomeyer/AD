@@ -14,22 +14,52 @@ public class HashSetImpl implements HashSet {
 
     @Override
     public boolean add(Integer number) {
-        int index = number.hashCode() % size;
-        if (entries[index] == null) {
+        int index = getIndex(number);
+        if (entries[index] == null || entries[index] == -1) {
             entries[index] = number;
             return true;
+        } else if (!entries[index].equals(number)) {
+            for (int i = index; i < size; i++) {
+                if (entries[i] == null) {
+                    entries[i] = number;
+                    return true;
+                }
+            }
         }
         return false;
     }
 
     @Override
     public boolean remove(Integer number) {
+        int index = findIndex(number);
+        if (index != -1) {
+            entries[index] = -1; // tombstone
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean contains(Integer number) {
-        return false;
+        return findIndex(number) != -1;
+    }
+
+    private int findIndex(Integer number) {
+        int index = getIndex(number);
+        if (entries[index].equals(number)) {
+            return index;
+        } else if (entries[index] != null) {
+            for (int i = index; i < size; i++) {
+                if (entries[i] != null && entries[i].equals(number)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    private int getIndex(Integer number) {
+        return number.hashCode() % size;
     }
 
     @Override
