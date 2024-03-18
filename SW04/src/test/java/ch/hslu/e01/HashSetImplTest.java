@@ -43,8 +43,12 @@ class HashSetImplTest {
     }
 
     @Test
-    void testRemoveElementInList() {
+    void testRemoveElementUsingRotationToFindIndexAndAddElement() {
         HashSetImpl hashSet = new HashSetImpl();
+        hashSet.add(0);
+        hashSet.add(1);
+        hashSet.add(19);
+
         hashSet.add(18);
         hashSet.add(8);
         hashSet.remove(8);

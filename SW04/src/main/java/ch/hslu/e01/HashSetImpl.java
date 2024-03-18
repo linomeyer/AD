@@ -25,6 +25,13 @@ public class HashSetImpl implements HashSet {
                     return true;
                 }
             }
+            // rotate to start of array and search up to index
+            for (int i = 0; i < index; i++) {
+                if (entries[i] == null) {
+                    entries[i] = number;
+                    return true;
+                }
+            }
         }
         return false;
     }
@@ -48,9 +55,21 @@ public class HashSetImpl implements HashSet {
         int index = getIndex(number);
         if (entries[index].equals(number)) {
             return index;
-        } else if (entries[index] != null) {
+        } else if (entries[index] != null || entries[index].equals(-1)) {
             for (int i = index; i < size; i++) {
-                if (entries[i] != null && entries[i].equals(number)) {
+                if (entries[i] == null) {
+                    return -1;
+                }
+                if (entries[i].equals(number)) {
+                    return i;
+                }
+            }
+            // rotate to start of array and search up to index
+            for (int i = 0; i < index; i++) {
+                if (entries[i] == null) {
+                    return -1;
+                }
+                if (entries[i].equals(number)) {
                     return i;
                 }
             }
@@ -64,7 +83,7 @@ public class HashSetImpl implements HashSet {
 
     @Override
     public Iterator<Integer> iterator() {
-        return null;
+        return Arrays.stream(entries).iterator();
     }
 
     @Override
