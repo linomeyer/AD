@@ -1,5 +1,7 @@
 package ch.hslu.e01;
 
+import ch.hslu.HashSet;
+
 import java.util.Arrays;
 import java.util.Iterator;
 

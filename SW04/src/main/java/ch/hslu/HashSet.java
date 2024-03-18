@@ -1,4 +1,4 @@
-package ch.hslu.e01;
+package ch.hslu;
 
 import java.util.Iterator;
 

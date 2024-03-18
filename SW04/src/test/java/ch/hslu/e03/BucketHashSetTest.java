@@ -1,4 +1,4 @@
-package ch.hslu.e01;
+package ch.hslu.e03;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -7,12 +7,12 @@ import org.slf4j.LoggerFactory;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class HashSetImplTest {
+class BucketHashSetTest {
     private final Logger LOG = LoggerFactory.getLogger(getClass());
 
     @Test
     void testAddElementsToHashSet() {
-        HashSetImpl hashSet = new HashSetImpl();
+        BucketHashSet hashSet = new BucketHashSet();
         hashSet.add(15);
         hashSet.add(4);
 
@@ -23,7 +23,7 @@ class HashSetImplTest {
 
     @Test
     void testAddDifferentElementsWithEqualHashcode() {
-        HashSetImpl hashSet = new HashSetImpl();
+        BucketHashSet hashSet = new BucketHashSet();
         hashSet.add(15);
         hashSet.add(5);
 
@@ -33,7 +33,7 @@ class HashSetImplTest {
 
     @Test
     void testAddDifferentElementsWithEqualHashCodeAndRemoveSaidElement() {
-        HashSetImpl hashSet = new HashSetImpl();
+        BucketHashSet hashSet = new BucketHashSet();
         hashSet.add(18);
         hashSet.add(8);
         hashSet.remove(8);
@@ -44,7 +44,7 @@ class HashSetImplTest {
 
     @Test
     void testRemoveElementUsingRotationToFindIndexAndAddElement() {
-        HashSetImpl hashSet = new HashSetImpl();
+        BucketHashSet hashSet = new BucketHashSet();
         hashSet.add(0);
         hashSet.add(1);
         hashSet.add(19);
@@ -59,7 +59,7 @@ class HashSetImplTest {
 
     @Test
     void testAddToFullHashset() {
-        HashSetImpl hashSet = new HashSetImpl();
+        BucketHashSet hashSet = new BucketHashSet();
         hashSet.add(0);
         hashSet.add(1);
         hashSet.add(2);
@@ -72,6 +72,6 @@ class HashSetImplTest {
         hashSet.add(9);
 
         LOG.info(hashSet.toString());
-        assertFalse(hashSet.add(5));
+        assertTrue(hashSet.add(5));
     }
 }
