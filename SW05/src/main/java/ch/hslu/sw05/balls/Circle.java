@@ -1,4 +1,4 @@
-package ch.hslu.ex01;/*
+package ch.hslu.sw05.balls;/*
  * Copyright 2024 Hochschule Luzern - Informatik.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
