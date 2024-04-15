@@ -18,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Random;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * Ein Rennpferd, das durch ein Startsignal losläuft. Nach einer zufälligen Zeit
@@ -27,17 +26,18 @@ import java.util.concurrent.CountDownLatch;
 public final class RaceHorse implements Runnable {
 
     private static final Logger LOG = LoggerFactory.getLogger(RaceHorse.class);
-    private static final CountDownLatch countDownLatch = new CountDownLatch(5);
     private final String name;
     private final Random random;
+    private final Latch latch;
 
     /**
      * Erzeugt ein Rennpferd, das in die Starterbox eintritt.
      *
      * @param name Name des Pferdes.
      */
-    public RaceHorse(final String name) {
+    public RaceHorse(final String name, Latch latch) {
         this.name = name;
+        this.latch = latch;
         this.random = new Random();
     }
 
@@ -45,12 +45,12 @@ public final class RaceHorse implements Runnable {
     public void run() {
         LOG.info("Rennpferd {} geht in die Box.", name);
         try {
-            countDownLatch.countDown();
-            countDownLatch.await();
+            latch.acquire();
             LOG.info("Rennpferd {} läuft los...", name);
             Thread.sleep(random.nextInt(3000));
         } catch (InterruptedException ex) {
-            LOG.debug(ex.getMessage(), ex);
+            LOG.info("The race was cancelled");
+            return;
         }
         LOG.info("Rennpferd {} ist im Ziel.", name);
     }

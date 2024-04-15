@@ -1,4 +1,4 @@
-package ch.hslu.sw06.waitpool;
+package ch.hslu.sw06.waitpool.edited;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

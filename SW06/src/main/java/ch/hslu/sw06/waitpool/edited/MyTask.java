@@ -1,4 +1,4 @@
-package ch.hslu.sw06.waitpool;/*
+package ch.hslu.sw06.waitpool.edited;/*
  * Copyright 2024 Hochschule Luzern - Informatik.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
