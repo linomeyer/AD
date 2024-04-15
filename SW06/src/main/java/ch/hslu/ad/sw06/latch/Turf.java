@@ -44,7 +44,6 @@ public final class Turf {
         for (int i = 1; i <= HORSES; i++) {
             threads.add(Thread.startVirtualThread(new RaceHorse("Horse " + i, latch)));
         }
-
         Thread.sleep(1000);
         LOG.info("Start...");
         latch.release();
@@ -55,9 +54,6 @@ public final class Turf {
             thread.interrupt();
         }
          */
-
-        // Main thread sleeps until all other threads are finished, what would be a better way?
-        // Thread.sleep(3100);
 
         // Main thread calls join on all other threads, so program finishes only when all threads are finished
         for (Thread thread : threads) {

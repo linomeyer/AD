@@ -136,7 +136,7 @@ public final class Semaphore {
             throw new IllegalStateException("Semaphore is full");
         }
         sema++;
-        this.notify();
+        this.notifyAll();
     }
 
     /**

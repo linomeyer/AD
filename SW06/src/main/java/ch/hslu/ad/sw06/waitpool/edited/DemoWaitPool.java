@@ -34,6 +34,7 @@ public final class DemoWaitPool {
     }
 }
 
+
 // c) If the whole main method is in a synchronized block, the lock on the LOCK object is acquired by
 // the main thread. The newly created Thread tries to execute the run() method of myTask but doesn't get far
 // because the object is already locked. It has to wait with executing the synchronized block until the lock
