@@ -54,7 +54,7 @@ public final class BankAccount {
      *
      * @param amount Einzuzahlender Betrag
      */
-    public void deposite(final int amount) {
+    public void deposit(final int amount) {
         this.balance.addAndGet(amount);
     }
 
@@ -65,7 +65,7 @@ public final class BankAccount {
      * @param amount zu überweisender Betrag.
      */
     public void transfer(final BankAccount target, final int amount) {
-        this.balance -= amount;
-        target.deposite(amount);
+        this.balance.set(this.balance.get() - amount);
+        deposit(amount);
     }
 }
