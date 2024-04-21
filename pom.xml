@@ -61,6 +61,7 @@
         <module>SW05</module>
         <module>SW06</module>
         <module>SW07</module>
+        <module>SW09</module>
     </modules>
 
     <scm>
