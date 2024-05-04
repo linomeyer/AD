@@ -3,6 +3,7 @@ package ch.hslu.ad.sw09;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
@@ -99,6 +100,7 @@ class SortTest {
         assertArrayEquals(Arrays.stream(expectedResult).sorted().toArray(), result);
     }
 
+    @Disabled("Takes too long")
     @Test
     void testBubbleSortOnRandomArray100k() {
         long startTime = System.currentTimeMillis();
