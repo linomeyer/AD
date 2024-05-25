@@ -2,6 +2,7 @@ package ch.hslu.ad.sw11.quicksort;
 
 import ch.hslu.ad.commons.Randomizer;
 import ch.hslu.ad.commons.RuntimeCalculator;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
@@ -65,5 +66,13 @@ class QuicksortTest {
         long endTime = System.currentTimeMillis();
         RUNTIME_CALCULATORS.get(JAVA_QUICKSORT).addTime(endTime - startTime);
         assertArrayEquals(sortedArray, array);
+    }
+
+    @AfterAll
+    static void afterAll() {
+        RUNTIME_CALCULATORS.forEach((name, runtimeCalculation) -> {
+            System.out.println("Runtime evaluation of: " + name + " on " + LENGTH + " elements\n");
+            System.out.println(runtimeCalculation.toString());
+        });
     }
 }

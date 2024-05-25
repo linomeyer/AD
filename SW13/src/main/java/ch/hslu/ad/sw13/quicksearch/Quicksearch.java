@@ -4,16 +4,22 @@ import java.util.Arrays;
 
 public class Quicksearch {
 
-    public static final int ASCII_RANGE = 256;
+    private static final int UNICODE_RANGE = 65536;
 
     public static int quickSearch(final String input, final String pattern) {
         final int[] shift = generateShiftArray(pattern);
 
-        quickSearch(input, pattern, shift);
-        return -1;
+        return quickSearch(input, pattern, shift);
     }
 
-    private static void quickSearch(String input, String pattern, int[] shift) {
+
+    public static int quickSearchOptimalMismatch(String input, String pattern) {
+        final int[] shift = generateShiftArray(pattern);
+
+        return quickSearchOptimalMismatch(input, pattern, shift);
+    }
+
+    private static int quickSearch(String input, String pattern, int[] shift) {
         final int inputLength = input.length();
         final int patternLength = pattern.length();
 
@@ -24,17 +30,65 @@ public class Quicksearch {
             if (input.charAt(inputIndex + patternIndex) == pattern.charAt(patternIndex)) {
                 patternIndex++;
             } else if (inputIndex + patternIndex < inputLength) { // check if jump would be out of bounds
-                inputIndex += shift[input.charAt(inputIndex + patternIndex)];
+                inputIndex += shift[input.charAt(inputIndex + patternLength)];
                 patternIndex = 0;
-            } else { // if it would be out of bounds
+            } else {
                 break;
             }
 
         } while (patternIndex < patternLength && inputIndex + patternLength < inputLength);
+
+        if (patternIndex == patternLength) {
+            return inputIndex;
+        } else {
+            return -1;
+        }
+    }
+
+    private static int quickSearchOptimalMismatch(String input, String pattern, int[] shift) {
+        final int inputLength = input.length();
+        final int patternLength = pattern.length();
+
+        String optimalPattern = pattern;
+
+
+        int inputIndex = 0;
+        int patternIndex = 0;
+
+        do {
+            if (input.charAt(inputIndex + pattern.indexOf(optimalPattern.charAt(patternIndex))) == optimalPattern.charAt(patternIndex)) {
+                patternIndex++;
+            } else if (inputIndex + patternIndex < inputLength) { // check if jump would be out of bounds
+                optimalPattern = swap(optimalPattern, pattern.charAt(patternIndex));
+                inputIndex += shift[input.charAt(inputIndex + patternLength)];
+                patternIndex = 0;
+            } else {
+                break;
+            }
+
+        } while (patternIndex < patternLength && inputIndex + patternLength < inputLength);
+
+        if (patternIndex == patternLength) {
+            return inputIndex;
+        } else {
+            return -1;
+        }
+    }
+
+    private static String swap(String optimalPattern, char c) {
+        int indexOfMismatch = optimalPattern.indexOf(c);
+        char[] optimalPatternArray = optimalPattern.toCharArray();
+        char temp = optimalPatternArray[indexOfMismatch];
+        if (indexOfMismatch != 0) {
+            optimalPatternArray[indexOfMismatch] = optimalPatternArray[indexOfMismatch - 1];
+            optimalPatternArray[indexOfMismatch - 1] = temp;
+        }
+
+        return new String(optimalPatternArray);
     }
 
     private static int[] generateShiftArray(final String pattern) {
-        final int[] shift = new int[ASCII_RANGE];
+        final int[] shift = new int[UNICODE_RANGE];
         final int patternLength = pattern.length();
 
         Arrays.fill(shift, patternLength + 1);
