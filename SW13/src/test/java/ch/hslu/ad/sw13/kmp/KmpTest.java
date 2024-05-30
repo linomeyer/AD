@@ -10,7 +10,10 @@ class KmpTest {
     @Test
     void testInitNext() {
         int[] ananas = Kmp.initNext("ANANAS");
+        int[] eisbein = Kmp.initNext("EISBEIN");
+
         assertArrayEquals(new int[]{-1, 0, 0, 1, 2, 3}, ananas);
+        assertArrayEquals(new int[]{-1, 0, 0, 0, 0, 1, 2}, eisbein);
     }
 
     @Test

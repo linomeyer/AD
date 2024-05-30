@@ -8,14 +8,12 @@ public class Quicksearch {
 
     public static int quickSearch(final String input, final String pattern) {
         final int[] shift = generateShiftArray(pattern);
-
         return quickSearch(input, pattern, shift);
     }
 
 
     public static int quickSearchOptimalMismatch(String input, String pattern) {
         final int[] shift = generateShiftArray(pattern);
-
         return quickSearchOptimalMismatch(input, pattern, shift);
     }
 
@@ -50,8 +48,6 @@ public class Quicksearch {
         final int patternLength = pattern.length();
 
         String optimalPattern = pattern;
-
-
         int inputIndex = 0;
         int patternIndex = 0;
 
@@ -78,8 +74,8 @@ public class Quicksearch {
     private static String swap(String optimalPattern, char c) {
         int indexOfMismatch = optimalPattern.indexOf(c);
         char[] optimalPatternArray = optimalPattern.toCharArray();
-        char temp = optimalPatternArray[indexOfMismatch];
         if (indexOfMismatch != 0) {
+            char temp = optimalPatternArray[indexOfMismatch];
             optimalPatternArray[indexOfMismatch] = optimalPatternArray[indexOfMismatch - 1];
             optimalPatternArray[indexOfMismatch - 1] = temp;
         }

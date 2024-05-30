@@ -65,6 +65,7 @@
         <module>Commons</module>
         <module>SW11</module>
         <module>SW13</module>
+        <module>SW14</module>
     </modules>
 
     <scm>

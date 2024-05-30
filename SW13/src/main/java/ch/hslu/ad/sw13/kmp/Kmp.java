@@ -1,23 +1,21 @@
 package ch.hslu.ad.sw13.kmp;
 
 public class Kmp {
-    public static int[] initNext(final String p) {
-        final int m = p.length();
-        final int[] next = new int[m];
+    public static int[] initNext(final String pattern) {
+        final int patternLength = pattern.length();
+        final int[] next = new int[patternLength];
         int i = 0;
-        int j = -1;
+        int nextIndex = -1;
         next[0] = -1;
-        // special value! (-1 = no reference to a following state)
         do {
-            if ((j == -1) || (p.charAt(i) == p.charAt(j))) {
-                // (j == -1) must be first operand!
+            if ((nextIndex == -1) || (pattern.charAt(i) == pattern.charAt(nextIndex))) {
                 i++;
-                j++;
-                next[i] = j;
+                nextIndex++;
+                next[i] = nextIndex;
             } else {
-                j = next[j];
+                nextIndex = next[nextIndex];
             }
-        } while (i < (m - 1));
+        } while (i < (patternLength - 1));
         return next;
     }
 
